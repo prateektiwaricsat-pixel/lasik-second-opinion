@@ -97,6 +97,18 @@
   ul.check li::before{content:"✓";position:absolute;left:4px;top:10px;font-weight:800;color:var(--accent)}
   ul.flag li::before{content:"!";color:var(--defer)}
 
+  .prof{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:start;margin-top:22px}
+  @media (max-width:760px){.prof{grid-template-columns:1fr}.prof-photo{max-width:240px}}
+  .prof-photo{width:100%;aspect-ratio:3/5;border-radius:18px;background:#e2e8f0 url(data:image/webp;base64,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) center/cover no-repeat;box-shadow:0 10px 30px rgba(15,23,42,.15)}
+  .tl{list-style:none;margin-top:6px;border-left:3px solid var(--accent);padding-left:22px}
+  .tl li{position:relative;padding:0 0 18px}
+  .tl li::before{content:"";position:absolute;left:-31px;top:6px;width:15px;height:15px;border-radius:50%;background:#fff;border:3px solid var(--accent)}
+  .tl b{display:block;font-size:17px}
+  .tl span{color:var(--muted);font-size:15px}
+  .why{margin-top:22px;padding:18px 22px;border-radius:14px;background:#eff6ff;border:1px solid #bfdbfe}
+  .why h3{margin-bottom:8px;color:var(--accent-dark)}
+  .why ul{margin:0;padding-left:20px}
+  .why li{margin:6px 0}
   .creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
   .creds span{font-size:14px;font-weight:600;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line)}
 
@@ -249,14 +261,32 @@
 <section>
   <div class="wrap">
     <span class="eyebrow">Who reviews your eyes</span>
-    <h2>Dr. Prateek Tiwari</h2>
+    <h2>Why get your second opinion from Dr. Prateek Tiwari?</h2>
     <p class="lead" style="margin-top:6px">Cornea, Cataract &amp; Refractive Surgeon · Founder, Antardrashti Netralaya, Indore</p>
-    <p style="margin-top:16px;max-width:760px">Dr. Prateek trained in cornea and refractive surgery at <b>Dr. Shroff's Charity Eye Hospital, New Delhi</b>, one of India's leading cornea institutions. His daily practice includes keratoconus, corneal cross-linking (C3R), ICL, corneal transplantation and the management of refractive-surgery complications — the conditions that careful LASIK screening is meant to prevent.</p>
-    <div class="creds">
-      <span>MS Ophthalmology</span>
-      <span>Fellowship, Cornea &amp; Refractive — Dr. Shroff's, Delhi</span>
-      <span>10+ years experience</span>
-      <span>15,000+ surgeries</span>
+    <div class="prof">
+      <div class="prof-photo" role="img" aria-label="Dr. Prateek Tiwari"></div>
+      <div>
+        <h3 style="margin-bottom:12px">Training &amp; experience</h3>
+        <ul class="tl">
+          <li><b>MBBS · MS Ophthalmology</b><span>Medical degree and post-graduation in eye surgery</span></li>
+          <li><b>Fellowship in Cornea &amp; Refractive Surgery — Dr. Shroff's Charity Eye Hospital, New Delhi</b><span>One of India's leading cornea institutes. Trained in advanced cornea and ocular-surface surgery under Dr. Sangwan.</span></li>
+          <li><b>Centre for Sight &amp; ASG Eye Hospital</b><span>Worked at two of India's large refractive-surgery centres — hands-on experience with modern LASIK, SMILE and ICL technology and workflows.</span></li>
+          <li><b>Founder, Antardrashti Netralaya, Indore (2024)</b><span>Subspecialty cornea practice: keratoconus, C3R cross-linking, ICL, DALK &amp; corneal transplants.</span></li>
+        </ul>
+        <div class="creds">
+          <span>10+ years experience</span>
+          <span>15,000+ surgeries</span>
+          <span>Cornea &amp; refractive fellowship</span>
+        </div>
+        <div class="why">
+          <h3>Why this matters for your LASIK decision</h3>
+          <ul>
+            <li><b>He treats what goes wrong.</b> Keratoconus and post-LASIK ectasia are his daily work — he knows which corneas are at risk.</li>
+            <li><b>He knows the technology options.</b> Having worked in large refractive centres, he can explain which procedure and which add-ons genuinely matter for your eyes.</li>
+            <li><b>He has nothing to sell you.</b> Same fee whichever verdict you get. You are free to get operated anywhere.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -396,14 +426,32 @@
 <section>
   <div class="wrap">
     <span class="eyebrow">आपकी reports कौन देखेगा</span>
-    <h2>Dr. Prateek Tiwari</h2>
+    <h2>Second opinion Dr. Prateek Tiwari से ही क्यों?</h2>
     <p class="lead" style="margin-top:6px">Cornea, Cataract &amp; Refractive Surgeon · Founder, अंतर्दृष्टि नेत्रालय, Indore</p>
-    <p style="margin-top:16px;max-width:760px">Dr. Prateek ने cornea और refractive surgery की training <b>Dr. Shroff's Charity Eye Hospital, New Delhi</b> से ली है, जो देश के प्रमुख cornea institutes में से एक है। उनकी रोज़ की practice में keratoconus, corneal cross-linking (C3R), ICL, cornea transplant और refractive surgery की complications का इलाज शामिल है — यानी वही conditions जिनसे सही LASIK screening बचाती है।</p>
-    <div class="creds">
-      <span>MS Ophthalmology</span>
-      <span>Fellowship, Cornea &amp; Refractive — Dr. Shroff's, Delhi</span>
-      <span>10+ साल का अनुभव</span>
-      <span>15,000+ surgeries</span>
+    <div class="prof">
+      <div class="prof-photo" role="img" aria-label="Dr. Prateek Tiwari"></div>
+      <div>
+        <h3 style="margin-bottom:12px">Training और अनुभव</h3>
+        <ul class="tl">
+          <li><b>MBBS · MS Ophthalmology</b><span>Medical degree और आँखों की surgery में post-graduation</span></li>
+          <li><b>Cornea &amp; Refractive Surgery Fellowship — Dr. Shroff's Charity Eye Hospital, New Delhi</b><span>देश के प्रमुख cornea institutes में से एक। Dr. Sangwan के साथ advanced cornea और ocular surface surgery की training।</span></li>
+          <li><b>Centre for Sight और ASG Eye Hospital</b><span>देश के दो बड़े refractive surgery centres में काम किया — आधुनिक LASIK, SMILE और ICL technology का hands-on अनुभव।</span></li>
+          <li><b>Founder, अंतर्दृष्टि नेत्रालय, Indore (2024)</b><span>Cornea subspecialty practice: keratoconus, C3R, ICL, DALK और cornea transplant।</span></li>
+        </ul>
+        <div class="creds">
+          <span>10+ साल का अनुभव</span>
+          <span>15,000+ surgeries</span>
+          <span>Cornea &amp; refractive fellowship</span>
+        </div>
+        <div class="why">
+          <h3>आपके LASIK फ़ैसले के लिए यह क्यों ज़रूरी है</h3>
+          <ul>
+            <li><b>गड़बड़ी का इलाज वही करते हैं।</b> Keratoconus और LASIK के बाद ectasia उनका रोज़ का काम है — किस cornea में risk है, वे पहचानते हैं।</li>
+            <li><b>हर technology option को समझते हैं।</b> बड़े refractive centres में काम के अनुभव से बता सकते हैं कि आपकी आँख के लिए कौन-सी procedure और कौन-से add-ons सच में ज़रूरी हैं।</li>
+            <li><b>उन्हें आपको कुछ बेचना नहीं है।</b> Verdict जो भी हो, fee वही। Operation आप कहीं भी करवा सकते हैं।</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>

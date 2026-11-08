@@ -40,7 +40,10 @@
   header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}
   header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
   .brand{font-weight:800;font-size:16px;color:var(--ink);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .brand span.tag{color:var(--accent)}
+  .brand{display:inline-flex;align-items:center;gap:8px}
+  .brand .logo{width:32px;height:32px;flex:none}
+  .brand b{color:var(--accent);font-weight:800}
+  .brand span.tag{color:var(--muted);font-weight:600}
   .head-right{display:flex;align-items:center;gap:10px}
   .lang-switch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
   .lang-switch button{border:0;background:#fff;padding:7px 12px;font-weight:700;font-size:14px;cursor:pointer;color:var(--muted);font-family:inherit}
@@ -132,12 +135,13 @@
   @media (min-width:820px){ .sticky-cta{display:none} footer{padding-bottom:40px} }
   @media (max-width:520px){ .brand span.tag{display:none} header .btn-small{display:none} }
 </style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%231e3a8a%22%2F%3E%3Cpath%20d%3D%22M8%2032C15%2020%2023%2015%2032%2015S49%2020%2056%2032C49%2044%2041%2049%2032%2049S15%2044%208%2032Z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.5%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2211%22%20fill%3D%22%233b82f6%22%2F%3E%3Cpath%20d%3D%22M26.5%2032.5l4%204%207.5-8%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 </head>
 <body class="en">
 
 <header>
   <div class="wrap">
-    <a class="brand" href="#">Dr. Prateek Tiwari <span class="tag">· LASIK Second Opinion</span></a>
+    <a class="brand" href="#"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1e3a8a"/><path d="M8 32C15 20 23 15 32 15S49 20 56 32C49 44 41 49 32 49S15 44 8 32Z" fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/><circle cx="32" cy="32" r="11" fill="#3b82f6"/><path d="M26.5 32.5l4 4 7.5-8" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>LASIK <b>Second Opinion</b></span> <span class="tag">· Dr. Prateek Tiwari</span></a>
     <div class="head-right">
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-set-lang="en">English</button>

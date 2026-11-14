@@ -199,14 +199,15 @@
     { id:"urgent", t:["Right now, do you have sudden loss of vision, eye pain, flashes of light, or a shower of new floaters?", "क्या अभी आपको अचानक नज़र कम होना, आँख में दर्द, बिजली जैसी चमक, या अचानक बहुत सारे काले धब्बे (floaters) दिख रहे हैं?"],
       o:[["no",["No","नहीं"]],["yes",["Yes","हाँ"]]] },
     { id:"age", t:["How old are you?", "आपकी उम्र क्या है?"],
-      o:[["u18",["Under 18","18 से कम"]],["18",["18 to 20","18 से 20"]],["21",["21 to 39","21 से 39"]],["40",["40 to 45","40 से 45"]],["46",["46 or above","46 या ज़्यादा"]]] },
+      o:[["u18",["Under 18","18 से कम"]],["18",["18 to 20","18 से 20"]],["21",["21 to 39","21 से 39"]],["40",["40 to 45","40 से 45"]],["46",["46 to 50","46 से 50"]],["51",["Above 50","50 से ज़्यादा"]]] },
     { id:"purpose", t:["Why do you want to remove your glasses?", "आप चश्मा क्यों हटवाना चाहते हैं?"],
       o:[["general",["Convenience / looks","सुविधा / दिखने के लिए"]],["job",["Defence, police or government job medical","Defence, police या सरकारी नौकरी का medical"]],["sport",["Contact sports (boxing, martial arts, etc.)","Contact sports (boxing, martial arts आदि)"]],["other",["Other","कुछ और"]]] },
     { id:"type", t:["What kind of glasses power do you have?", "आपका चश्मे का number किस तरह का है?"],
-      o:[["minus",["Minus (distance is blurry)","Minus (दूर का धुंधला)"]],["plus",["Plus (near is blurry / plus number)","Plus number"]],["dk",["Don't know","पता नहीं"]]] },
+      o:[["minus",["Minus (distance is blurry)","Minus (दूर का धुंधला)"]],["plus",["Plus (+) number on my prescription","पर्चे पर plus (+) number"]],["readers",["Only reading glasses (for near work)","सिर्फ़ पढ़ने का चश्मा (पास के काम के लिए)"]],["dk",["Don't know","पता नहीं"]]] },
     { id:"sph", t:["How high is the power in your weaker eye?", "आपकी ज़्यादा number वाली आँख में number कितना है?"],
       h:["Ignore the + or − sign. Look at the SPH value on your prescription.", "+ या − को छोड़ दें। पर्चे पर SPH देखें।"],
-      o:[["3",["Up to 3","3 तक"]],["6",["3 to 6","3 से 6"]],["8",["6 to 8","6 से 8"]],["10",["8 to 10","8 से 10"]],["11",["Above 10","10 से ज़्यादा"]],["dk",["Don't know","पता नहीं"]]] },
+      o:[["3",["Up to 3","3 तक"]],["6",["3 to 6","3 से 6"]],["8",["6 to 8","6 से 8"]],["10",["8 to 10","8 से 10"]],["11",["Above 10","10 से ज़्यादा"]],["dk",["Don't know","पता नहीं"]]],
+      oPlus:[["p2",["Up to +2","+2 तक"]],["p4",["+2 to +4","+2 से +4"]],["p6",["Above +4","+4 से ज़्यादा"]],["dk",["Don't know","पता नहीं"]]] },
     { id:"cyl", t:["How much cylinder (CYL) power do you have?", "आपका cylinder (CYL) number कितना है?"],
       h:["Cylinder is the astigmatism value on your prescription.", "Cylinder पर्चे पर CYL के नाम से लिखा होता है।"],
       o:[["lt1",["None, or less than 1","नहीं है, या 1 से कम"]],["1to3",["1 to 3","1 से 3"]],["gt3",["Above 3","3 से ज़्यादा"]],["dk",["Don't know","पता नहीं"]]] },
@@ -225,7 +226,7 @@
     { id:"cl", t:["Do you wear contact lenses?", "क्या आप contact lens पहनते हैं?"],
       o:[["none",["No","नहीं"]],["occ",["Occasionally","कभी-कभार"]],["daily",["Daily soft lenses","रोज़ soft lens"]],["rgp",["Hard / RGP lenses","Hard / RGP lens"]]] },
     { id:"eye", multi:true, t:["Have you had any of these in your eyes?", "क्या आपकी आँखों में इनमें से कुछ हुआ है?"],
-      o:[["none",["None of these","इनमें से कुछ नहीं"]],["surgery",["Previous eye surgery","पहले आँख का operation"]],["glaucoma",["Glaucoma (high eye pressure)","Glaucoma (काला मोतिया)"]],["retina",["Retina problem or retina laser","पर्दे की दिक्कत या retina laser"]],["lazy",["Lazy eye (one eye always weak)","Lazy eye (एक आँख हमेशा से कमज़ोर)"]]] },
+      o:[["none",["None of these","इनमें से कुछ नहीं"]],["surgery",["Previous eye surgery","पहले आँख का operation"]],["glaucoma",["Glaucoma (high eye pressure)","Glaucoma (काला मोतिया)"]],["retina",["Retina problem or retina laser","पर्दे की दिक्कत या retina laser"]],["lazy",["Lazy eye (one eye always weak)","Lazy eye (एक आँख हमेशा से कमज़ोर)"]],["herpes",["Herpes eye infection or a scar on the cornea","आँख में herpes का infection या cornea पर निशान"]],["thyroid",["Thyroid eye disease","Thyroid की आँखों की बीमारी"]],["oneeye",["Only one eye sees well","सिर्फ़ एक आँख से अच्छा दिखता है"]]] },
     { id:"health", multi:true, t:["Do any of these apply to you?", "क्या इनमें से कुछ आप पर लागू है?"],
       o:[["none",["None of these","इनमें से कुछ नहीं"]],["dmc",["Diabetes, well controlled","Diabetes, control में"]],["dmu",["Diabetes, not well controlled","Diabetes, control में नहीं"]],["auto",["Autoimmune disease (rheumatoid arthritis, lupus, etc.)","Autoimmune बीमारी (rheumatoid arthritis, lupus आदि)"]],["preg",["Pregnant or breastfeeding","Pregnant या बच्चे को दूध पिला रही हैं"]],["iso",["Acne tablets (isotretinoin) in the last 6 months","पिछले 6 महीनों में मुँहासों की गोली (isotretinoin)"]]] },
     { id:"reports", t:["Which eye reports do you have right now?", "अभी आपके पास कौन सी reports हैं?"],
@@ -243,14 +244,19 @@
     kcRisk:[["Family history of keratoconus plus other warning signs","परिवार में keratoconus और साथ में दूसरे warning signs"],["Keratoconus runs in families. Together with frequent eye rubbing, changing power or high cylinder, your corneal scans need a careful look before any laser.","Keratoconus परिवार में चलता है। अक्सर आँख मलना, बदलता number या ज़्यादा cylinder साथ में हो, तो किसी भी laser से पहले corneal scans ध्यान से देखना ज़रूरी है।"]],
     hiMyo: [["Very high minus power (above 10)","बहुत ज़्यादा minus number (10 से ऊपर)"],["Correcting this much with laser removes a lot of corneal tissue. A lens-based option (ICL) is usually considered instead.","इतना number laser से ठीक करने में cornea का बहुत tissue हटता है। ऐसे में आम तौर पर lens वाला option (ICL) देखा जाता है।"]],
     thin:  [["Corneal thickness below 480 microns","Cornea की मोटाई 480 microns से कम"],["A thin cornea leaves less safety margin after laser and raises the risk of ectasia (a weak, bulging cornea). Surface laser or a lens-based option may be discussed.","पतले cornea में laser के बाद safety margin कम बचता है और ectasia (cornea का कमज़ोर होकर उभरना) का risk बढ़ता है। Surface laser या lens वाला option देखा जा सकता है।"]],
-    hiPlus:[["High plus power","ज़्यादा plus number"],["Laser results for high plus powers are less predictable and can fade with time. Lens-based options are often considered.","ज़्यादा plus number में laser के नतीजे कम पक्के होते हैं और समय के साथ घट सकते हैं। अक्सर lens वाले options देखे जाते हैं।"]],
+    hiPlus:[["High plus power (above +4)","ज़्यादा plus number (+4 से ऊपर)"],["Laser results for high plus powers are less predictable and can fade with time. Lens-based options are often considered.","ज़्यादा plus number में laser के नतीजे कम पक्के होते हैं और समय के साथ घट सकते हैं। अक्सर lens वाले options देखे जाते हैं।"]],
     myo810:[["High minus power (8 to 10)","ज़्यादा minus number (8 से 10)"],["Whether laser is possible depends on your corneal thickness and shape. Some people in this range do better with ICL.","Laser हो सकता है या नहीं, यह cornea की मोटाई और shape पर निर्भर है। इस range में कुछ लोगों के लिए ICL बेहतर रहता है।"]],
-    plusMid:[["Moderate plus power","मध्यम plus number"],["Plus powers need a refraction with dilating drops to find the true number before planning.","Plus number में plan बनाने से पहले दवा डालकर असली number निकालना ज़रूरी है।"]],
+    plusMid:[["Moderate plus power (+2 to +4)","मध्यम plus number (+2 से +4)"],["Plus powers need a refraction with dilating drops to find the true number before planning.","Plus number में plan बनाने से पहले दवा डालकर असली number निकालना ज़रूरी है।"]],
     cyl:   [["High cylinder (above 3)","ज़्यादा cylinder (3 से ऊपर)"],["High astigmatism can be treated, but it can also be an early sign of an irregular cornea. Your corneal map decides.","ज़्यादा cylinder का इलाज हो सकता है, पर यह irregular cornea का शुरुआती sign भी हो सकता है। फ़ैसला आपके corneal map से होता है।"]],
     borderPachy:[["Borderline corneal thickness (480 to 500)","Borderline cornea मोटाई (480 से 500)"],["Laser may be possible depending on your power and the type of procedure. The calculation of how much cornea remains is important here.","Number और procedure के हिसाब से laser हो सकता है। यहाँ यह हिसाब ज़रूरी है कि बाद में कितना cornea बचेगा।"]],
     dry:   [["Frequent dry-eye symptoms","अक्सर dry eye के लक्षण"],["LASIK can make dry eye worse for some months. Dry eye is usually tested and treated first, and it can affect which procedure suits you.","LASIK से कुछ महीनों के लिए dry eye बढ़ सकती है। आम तौर पर पहले इसकी जाँच और इलाज होता है, और इससे procedure का चुनाव बदल सकता है।"]],
     rub:   [["Frequent eye rubbing or allergy","अक्सर आँख मलना या allergy"],["Rubbing weakens the cornea over time. Allergy should be controlled and the corneal map checked carefully.","मलने से समय के साथ cornea कमज़ोर होता है। Allergy control करें और corneal map ध्यान से देखा जाए।"]],
     kcFam: [["Keratoconus in the family","परिवार में keratoconus"],["Your own corneal scan should be read carefully for early signs before laser.","Laser से पहले आपके अपने corneal scan में शुरुआती signs ध्यान से देखे जाएँ।"]],
+    age50: [["Age above 50","उम्र 50 से ज़्यादा"],["After 50, near vision has usually weakened and early lens changes (cataract) are common. Laser on the cornea fixes neither, so lens-based options such as a lens exchange are often discussed instead.","50 के बाद आम तौर पर पास की नज़र कमज़ोर हो चुकी होती है और lens में शुरुआती बदलाव (मोतियाबिंद) आम हैं। Cornea पर laser इनमें से कुछ ठीक नहीं करता, इसलिए अक्सर lens वाले options (जैसे lens exchange) पर बात होती है।"]],
+    readers:[["Only reading glasses","सिर्फ़ पढ़ने का चश्मा"],["Needing glasses only for near work is usually presbyopia, an age change in the eye's own lens. Standard LASIK corrects distance power and does not cure this. Some options exist, each with trade-offs, and they need a detailed discussion.","सिर्फ़ पास के काम के लिए चश्मा लगना आम तौर पर presbyopia है, जो आँख के अपने lens में उम्र के साथ होने वाला बदलाव है। Standard LASIK दूर का number ठीक करता है, इसे नहीं। कुछ options हैं, सबके अपने फ़ायदे-नुक़सान हैं, और इन पर detail में बात ज़रूरी है।"]],
+    herpes:[["Herpes eye infection or a corneal scar","आँख में herpes या cornea पर निशान"],["Laser can re-activate herpes in the eye, and a scar changes how the cornea behaves. A cornea specialist should examine the eye before any laser is considered.","Laser से आँख का herpes दोबारा active हो सकता है, और निशान से cornea का व्यवहार बदल जाता है। किसी भी laser से पहले cornea specialist को आँख देखनी चाहिए।"]],
+    thyroid:[["Thyroid eye disease","Thyroid की आँखों की बीमारी"],["It can cause dry, exposed eyes and changing measurements. The disease should be stable and the eye surface healthy before refractive surgery.","इससे आँखें dry और खुली रह सकती हैं और measurements बदल सकते हैं। Refractive surgery से पहले बीमारी stable और आँख की सतह स्वस्थ होनी चाहिए।"]],
+    oneeye:[["Only one eye sees well","सिर्फ़ एक आँख से अच्छा दिखता है"],["Any surgery on your only good eye carries extra weight, because there is no backup. Most surgeons are very cautious here. This needs a careful in-person discussion of risks and alternatives.","आपकी इकलौती अच्छी आँख पर कोई भी surgery ज़्यादा मायने रखती है, क्योंकि कोई backup नहीं है। ज़्यादातर surgeons यहाँ बहुत सावधानी रखते हैं। इसके risks और विकल्पों पर आमने-सामने ध्यान से बात ज़रूरी है।"]],
     age40: [["Age 40 or above","उम्र 40 या ज़्यादा"],["Around this age, near vision starts to weaken (presbyopia). After distance correction you may still need reading glasses, and after the mid-forties early cataract changes also matter.","इस उम्र के आसपास पास की नज़र कमज़ोर होने लगती है (presbyopia)। दूर का number हटने के बाद भी पढ़ने का चश्मा लग सकता है, और 45 के बाद शुरुआती मोतियाबिंद भी देखना पड़ता है।"]],
     age18: [["Age 18 to 20","उम्र 18 से 20"],["Power is often still settling at this age. Proof of a stable number for 12 months matters more for you.","इस उम्र में number अक्सर अभी settle हो रहा होता है। आपके लिए 12 महीने stable number का सबूत ज़्यादा ज़रूरी है।"]],
     cl:    [["Regular contact lens wear","Regular contact lens"],["Lenses temporarily change the corneal shape. Stop soft lenses about 1 to 2 weeks and hard lenses about 3 to 4 weeks before scans, or the measurements can mislead.","Lens से cornea की shape कुछ समय के लिए बदल जाती है। Scans से पहले soft lens क़रीब 1–2 हफ़्ते और hard lens क़रीब 3–4 हफ़्ते बंद करें, वरना measurements ग़लत आ सकते हैं।"]],
@@ -305,15 +311,18 @@
     if (has("health","dmu")) wait.push("dmu");
 
     if (a.kc==="self") cornea.push("kcSelf");
+    if (has("eye","herpes")) cornea.push("herpes");
     else if (a.kc==="family" && (a.rub==="often" || a.stable==="changed" || a.cyl==="gt3")) cornea.push("kcRisk");
 
     const plus = a.type==="plus";
     if (!plus && a.sph==="11") alt.push("hiMyo");
-    if (plus && (a.sph==="8" || a.sph==="10" || a.sph==="11")) alt.push("hiPlus");
+    if (plus && a.sph==="p6") alt.push("hiPlus");
+    if (a.type==="readers") alt.push("readers");
+    if (a.age==="51") alt.push("age50");
     if (a.pachy==="lt480") alt.push("thin");
 
     if (!plus && a.sph==="10") detail.push("myo810");
-    if (plus && a.sph==="6") detail.push("plusMid");
+    if (plus && a.sph==="p4") detail.push("plusMid");
     if (a.cyl==="gt3") detail.push("cyl");
     if (a.pachy==="480") detail.push("borderPachy");
     if (a.dry==="often") detail.push("dry");
@@ -325,13 +334,13 @@
     if (a.cl==="daily" || a.cl==="rgp") detail.push("cl");
     if (has("health","dmc") && !has("health","dmu")) detail.push("dmc");
     if (has("health","auto")) detail.push("auto");
-    ["surgery","glaucoma","retina","lazy"].forEach(k => { if (has("eye",k)) detail.push(k); });
+    ["surgery","glaucoma","retina","lazy","thyroid","oneeye"].forEach(k => { if (has("eye",k)) detail.push(k); });
     if (a.purpose==="job") detail.push("job");
     if (a.purpose==="sport") detail.push("sport");
     if (a.stable==="dk") detail.push("stableDk");
 
     if (a.age==="21") ok.push("age");
-    if (a.sph!=="dk" && a.type!=="dk" && !alt.includes("hiMyo") && !alt.includes("hiPlus") && !detail.includes("myo810") && !detail.includes("plusMid")) ok.push("power");
+    if (a.sph!=="dk" && a.type!=="dk" && a.type!=="readers" && !alt.includes("hiMyo") && !alt.includes("hiPlus") && !detail.includes("myo810") && !detail.includes("plusMid")) ok.push("power");
     if (a.stable==="stable") ok.push("stable");
     if (a.pachy==="gt500") ok.push("pachy");
     if (has("health","none")) ok.push("health");
@@ -379,7 +388,7 @@
       '<h2>' + L(q.t) + '</h2>' +
       (q.h ? '<p class="hint">' + L(q.h) + '</p>' : '') +
       (q.multi ? '<p class="hint">' + L(T.pickAll) + '</p>' : '') + '<div class="opts">';
-    q.o.forEach(o => {
+    ((q.id === "sph" && ans.type === "plus") ? q.oPlus : q.o).forEach(o => {
       const sel = q.multi ? (cur || []).includes(o[0]) : cur === o[0];
       h += '<button type="button" class="opt' + (sel ? ' sel' : '') + '" data-v="' + o[0] + '">' +
         (q.multi ? '<span class="box">' + (sel ? '✓' : '') + '</span>' : '') + '<span>' + L(o[1]) + '</span></button>';
@@ -388,13 +397,15 @@
     if (q.multi) h += '<div class="stack"><button class="btn btn-primary" id="nx"' + ((cur || []).length ? '' : ' disabled') + '>' + L(T.next) + '</button></div>';
     app.innerHTML = h;
     const back = document.getElementById("back");
-    if (back) back.onclick = () => { idx--; render(); };
+    if (back) back.onclick = () => { idx--; if (Q[idx].id === "sph" && ans.type === "readers") idx--; render(); };
     app.querySelectorAll(".opt").forEach(b => b.onclick = () => {
       const v = b.dataset.v;
       if (!q.multi) {
+        if (q.id === "type" && ans.type !== v) delete ans.sph;
         ans[q.id] = v;
         if (q.id === "urgent" && v === "yes") { idx = Q.length + 1; render(); scrollTop(); return; }
-        idx++; render(); scrollTop(); return;
+        idx++; if (Q[idx] && Q[idx].id === "sph" && ans.type === "readers") { ans.sph = "na"; idx++; }
+        render(); scrollTop(); return;
       }
       let arr = (ans[q.id] || []).slice();
       if (v === "none") arr = arr.includes("none") ? [] : ["none"];

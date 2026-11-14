@@ -64,6 +64,7 @@
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 26px;border-radius:12px;font-weight:700;font-size:17px;text-decoration:none;border:2px solid transparent;transition:transform .15s ease, box-shadow .15s ease;font-family:inherit}
   .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(15,23,42,.12)}
   .btn-primary{background:var(--accent);color:#fff}
+  .btn-outline{background:#fff;color:var(--accent);border-color:var(--accent)}
   .btn-small{padding:9px 14px;font-size:14px;border-radius:10px}
   .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;align-items:center}
   .cta-note{font-size:14px;color:var(--muted)}
@@ -174,8 +175,9 @@
     <h1>Get an independent second opinion — from a cornea specialist, before anyone touches your eyes.</h1>
     <p class="lead">Upload the reports your LASIK centre gave you. A fellowship-trained cornea surgeon reviews them, discusses them with you on a video call, and gives you a clear written verdict. No sales pitch. No pressure to get operated here.</p>
     <div class="ctas">
-      <a class="btn btn-primary js-start" href="#">Start my second opinion →</a>
-      <span class="cta-note">5-minute form · upload reports · pay securely</span>
+      <a class="btn btn-primary js-check" href="/check.html">Free LASIK eligibility check · 3 min →</a>
+      <a class="btn btn-outline js-start" href="#">Have reports? Start ₹1,000 review</a>
+      <span class="cta-note">Not sure if LASIK suits you? Take the free check first. No login.</span>
     </div>
     <div class="price-card">
       <div><b>₹1,000</b>one flat fee</div>
@@ -341,8 +343,9 @@
     <h1>आँखों का operation करवाने से पहले, एक cornea specialist से independent second opinion लीजिए।</h1>
     <p class="lead">आपके LASIK centre ने जो reports दी हैं, उन्हें upload कीजिए। एक fellowship-trained cornea surgeon उन्हें ध्यान से देखेंगे, video call पर आपसे बात करेंगे, और आपको लिखित में साफ़ राय देंगे। कोई sales pitch नहीं। यहाँ operation करवाने का कोई दबाव नहीं।</p>
     <div class="ctas">
-      <a class="btn btn-primary js-start" href="#">अपना second opinion शुरू करें →</a>
-      <span class="cta-note">5 मिनट का form · reports upload · सुरक्षित payment</span>
+      <a class="btn btn-primary js-check" href="/check.html?lang=hi">मुफ़्त LASIK eligibility check · 3 मिनट →</a>
+      <a class="btn btn-outline js-start" href="#">Reports हैं? ₹1,000 review शुरू करें</a>
+      <span class="cta-note">पक्का नहीं कि LASIK आपके लिए सही है? पहले मुफ़्त check करें। कोई login नहीं।</span>
     </div>
     <div class="price-card">
       <div><b>₹1,000</b>एक ही fee</div>
@@ -560,6 +563,7 @@
       b.classList.toggle("active", b.dataset.setLang === lang));
     const formUrl = lang === "hi" ? FORM_URL_HI : FORM_URL_EN;
     document.querySelectorAll(".js-start").forEach(a => a.href = formUrl);
+    document.querySelectorAll(".js-check").forEach(a => a.href = "/check.html?lang=" + lang);
     const wa = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(waText[lang]);
     document.querySelectorAll(".js-wa").forEach(a => a.href = wa);
     try { localStorage.setItem("so_lang", lang); } catch(e) {}

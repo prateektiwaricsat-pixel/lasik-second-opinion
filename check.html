@@ -98,6 +98,11 @@
   .disc{margin-top:22px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
   .urgent{border:2px solid var(--wait);background:#fef2f2;border-radius:14px;padding:18px}
   .urgent h2{color:var(--wait)}
+  .ov{position:fixed;inset:0;background:rgba(15,23,42,.88);z-index:50;overflow:auto;padding:18px;text-align:center;color:#fff}
+  .ov img{max-width:100%;border-radius:10px;margin:14px 0;background:#fff}
+  .ov p{font-weight:700;font-size:17px}
+  .ov .btn{max-width:420px}
+  .btn-wa{background:#128c4a;color:#fff}
   footer{padding:0 0 40px;font-size:13.5px;color:var(--muted);text-align:center}
   footer p+p{margin-top:6px}
   @media print{
@@ -175,7 +180,15 @@
     cta: ["Get my reports reviewed · ₹1,000", "अपनी reports review करवाएँ · ₹1,000"],
     ctaSub: ["Independent second opinion: report review + 20-minute video call + signed written verdict. You can get operated anywhere.", "Independent second opinion: reports की जाँच + 20 मिनट video call + signed लिखित राय। Operation आप कहीं भी करवा सकते हैं।"],
     learn: ["How the second opinion works", "Second opinion कैसे काम करता है"],
-    save: ["Save or print this result", "Result save / print करें"],
+    save: ["Download my result (PDF)", "मेरा result download करें (PDF)"],
+    saving: ["Preparing your PDF…", "PDF तैयार हो रही है…"],
+    wa: ["Send result to my WhatsApp", "Result मेरे WhatsApp पर भेजें"],
+    hold: ["Long-press the image below to save it to your phone", "नीचे की image को दबाकर रखें और phone में save करें"],
+    close: ["Close", "बंद करें"],
+    pdfFail: ["Could not create the PDF here. Please use “Send result to my WhatsApp” instead.", "यहाँ PDF नहीं बन पाई। कृपया “Result मेरे WhatsApp पर भेजें” इस्तेमाल करें।"],
+    waHead: ["My LASIK self-check result", "मेरा LASIK self-check result"],
+    waWhy: ["Reasons", "वजहें"],
+    waTry: ["Free LASIK eligibility check", "मुफ़्त LASIK eligibility check"],
     again: ["Start again", "दोबारा शुरू करें"],
     disc: ["This self-check is for education only. It is not a diagnosis, a prescription or clearance for surgery, and it does not replace an eye examination. The result is based only on the answers you gave. The final decision is always made by your operating surgeon after examining your eyes.", "यह self-check सिर्फ़ जानकारी के लिए है। यह diagnosis, prescription या surgery की clearance नहीं है, और आँखों की जाँच का विकल्प नहीं है। Result सिर्फ़ आपके दिए जवाबों पर आधारित है। अंतिम फ़ैसला हमेशा आपके operating surgeon आपकी आँखों की जाँच के बाद लेते हैं।"],
     tests: ["Corneal topography / tomography (Pentacam or similar), both eyes|Corneal thickness (pachymetry)|Glasses power test with dilating drops (cycloplegic refraction)|Dry eye assessment|Dilated retina check", "Corneal topography / tomography (Pentacam या ऐसी ही machine), दोनों आँखें|Cornea की मोटाई (pachymetry)|दवा डालकर चश्मे के number की जाँच (cycloplegic refraction)|Dry eye की जाँच|पर्दे (retina) की जाँच"]
@@ -472,13 +485,94 @@
       (res.ok.length ? '<h3>' + L(T.okHead) + '</h3>' + listHtml(res.ok, "ok", OK, false) : '') +
       '<h3>' + L(T.noteHead) + '</h3>' + listHtml(res.notes, "nt", NOTE, false) +
       nextStepHtml(res) +
-      '<div class="stack noprint"><button class="btn btn-outline" id="save">' + L(T.save) + '</button>' +
+      '<div class="stack noprint"><a class="btn btn-wa" id="wa" target="_blank" rel="noopener" href="' + waLink(res, c, date) + '">' + L(T.wa) + '</a>' +
+      '<button class="btn btn-outline" id="save">' + L(T.save) + '</button>' +
       '<button class="btn btn-ghost" id="again" style="justify-self:center">' + L(T.again) + '</button></div>' +
       '<p class="disc">' + L(T.disc) + '</p></div>';
-    document.getElementById("save").onclick = () => window.print();
+    document.getElementById("save").onclick = e => savePdf(e.currentTarget);
+    document.getElementById("wa").onclick = () => track("result_whatsapp", { result: res.cat });
     document.getElementById("again").onclick = restart;
     const cta = document.getElementById("cta");
     if (cta) cta.onclick = () => { track("generate_lead", { method:"selfcheck_" + res.cat }); if (window.fbq) fbq("track", "Lead"); };
+  }
+
+  const SITE = "https://secondopinion.drprateektiwari.net/check";
+  function waLink(res, c, date){
+    const lines = ["*" + L(T.waHead) + "*", date + " · " + L(T.ref) + ": " + refId, "", "*" + L(c.stamp) + "*: " + L(c.h)];
+    if (res.reasons.length) { lines.push("", L(T.waWhy) + ":"); res.reasons.forEach(k => lines.push("• " + L(R[k][0]))); }
+    lines.push("", L(T.repBy), "", L(T.waTry) + ": " + SITE + "?lang=" + lang);
+    return "https://wa.me/?text=" + encodeURIComponent(lines.join("\n"));
+  }
+
+  function loadScript(src){
+    return new Promise((ok, fail) => {
+      if (document.querySelector('script[src="' + src + '"]')) return ok();
+      const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s);
+    });
+  }
+  const H2C = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+  const JSPDF = "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
+  const inApp = /Instagram|FBAN|FBAV|FB_IAB|WhatsApp|Line\/|Snapchat/i.test(navigator.userAgent);
+
+  async function savePdf(btn){
+    const label = btn.textContent; btn.disabled = true; btn.textContent = L(T.saving);
+    try {
+      await Promise.all([loadScript(H2C), loadScript(JSPDF)]);
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      const top0 = app.getBoundingClientRect().top;
+      const marks = [...app.querySelectorAll(".rep-head, .verdict, h3, li, .next, .disc")].map(el => el.getBoundingClientRect().top - top0);
+      const canvas = await html2canvas(app, { scale: 2, backgroundColor: "#ffffff", useCORS: true,
+        ignoreElements: el => el.classList && el.classList.contains("noprint") });
+      track("result_pdf", { inApp: inApp });
+      if (inApp) return showImage(canvas);
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ unit: "mm", format: "a4" });
+      const m = 10, w = 210 - 2 * m, pageH = 297 - 2 * m;
+      const k = canvas.height / app.getBoundingClientRect().height;      // canvas px per CSS px
+      const pagePx = Math.floor(pageH * canvas.width / w);                 // canvas px that fit one page
+      const breaks = marks.map(v => Math.round(v * k)).filter(v => v > 0).sort((a, b) => a - b);
+      let y0 = 0, first = true;
+      while (y0 < canvas.height - 4) {
+        let y1 = Math.min(y0 + pagePx, canvas.height);
+        if (y1 < canvas.height) {
+          const fit = breaks.filter(b => b > y0 + pagePx * 0.3 && b <= y1);
+          if (fit.length) y1 = fit[fit.length - 1];
+        }
+        const part = document.createElement("canvas");
+        part.width = canvas.width; part.height = y1 - y0;
+        const ctx = part.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, part.width, part.height);
+        ctx.drawImage(canvas, 0, y0, canvas.width, y1 - y0, 0, 0, canvas.width, y1 - y0);
+        if (!first) pdf.addPage();
+        pdf.addImage(part.toDataURL("image/jpeg", 0.92), "JPEG", m, m, w, (y1 - y0) * w / canvas.width);
+        y0 = y1; first = false;
+      }
+      const name = "LASIK-self-check-" + refId + ".pdf";
+      const blob = pdf.output("blob");
+      const file = new File([blob], name, { type: "application/pdf" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try { await navigator.share({ files: [file], title: L(T.waHead) }); return; }
+        catch (e) { if (e && e.name === "AbortError") return; }
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a"); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } catch (e) {
+      alertBox(L(T.pdfFail));
+    } finally { btn.disabled = false; btn.textContent = label; }
+  }
+
+  function showImage(canvas){
+    const ov = document.createElement("div"); ov.className = "ov";
+    ov.innerHTML = '<p>' + L(T.hold) + '</p><img alt="LASIK self-check result" src="' + canvas.toDataURL("image/jpeg", 0.92) + '">' +
+      '<button class="btn btn-outline" type="button">' + L(T.close) + '</button>';
+    ov.querySelector("button").onclick = () => ov.remove();
+    document.body.appendChild(ov);
+  }
+  function alertBox(msg){
+    const ov = document.createElement("div"); ov.className = "ov";
+    ov.innerHTML = '<p style="margin-top:30vh">' + msg + '</p><button class="btn btn-outline" type="button" style="margin-top:18px">' + L(T.close) + '</button>';
+    ov.querySelector("button").onclick = () => ov.remove();
+    document.body.appendChild(ov);
   }
 
   function sendLead(res){

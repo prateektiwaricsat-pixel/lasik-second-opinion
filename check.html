@@ -465,6 +465,8 @@
                                                 : "Reports मिलने के बाद, फ़ैसला लेने से पहले आप उन्हें independent तौर पर review करवा सकते हैं।") + '</p>';
     }
     let h = '<div class="next"><h3>' + L(T.nextHead) + '</h3>' + body + '</div>';
+    if (res.reasons.includes("dry")) h += '<p class="small noprint" style="margin-top:12px">' + (en ? "Your answers suggest dry eye symptoms. " : "आपके जवाबों में dry eye के लक्षण दिख रहे हैं। ") +
+      '<a href="/dryeye.html?lang=' + lang + '">' + (en ? "Take the free 2-minute dry eye check →" : "मुफ़्त 2 मिनट का dry eye check करें →") + '</a></p>';
     if (cta) h += '<div class="stack noprint"><a class="btn btn-primary" id="cta" href="' + FORM_URL + '">' + L(T.cta) + '</a>' +
       '<p class="small muted" style="text-align:center">' + L(T.ctaSub) + ' <a href="/?lang=' + lang + '">' + L(T.learn) + '</a></p></div>';
     return h;
